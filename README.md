@@ -137,7 +137,7 @@ The goal of CNS is to normalize and standardize the approach for defining, updat
 
 ## The Grammar of Consent
 
-![](RackMultipart20220906-1-s4mi7z_html_78460bea9adde4ff.png)
+![Managing Information Rights for Relationships](https://github.com/privacycoop/cns-commons/edit/main/images/consentDna.png)
 
 On the left side, the subject, we must constrain a request to one single object--a person, place or thing. Some people get confused on what we mean by a person, so we have adopted the CBLF (Carbon-Based Life Form) monicar. The goal here is to stretch your thinking beyond a browser or a device. In today's world, trees put out data that can be used by various relying parties using tech such as Augmented Reality. Consent applies to all.
 
