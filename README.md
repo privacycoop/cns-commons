@@ -157,7 +157,7 @@ The initial grid is easy to approach. The goal is to distil down a consent to us
 
 Project Falcon is agnostic to the work leading up to the intersection value as well as what happens with it afterward. However, the subject of these specs largely focus on the CRUD for the value (Create, Read, Update, and Delete).
 
-![Bitmap Depiction](https://github.com/privacycoop/cns-commons/blob/main/images/battleship2.png)
+![Bitmap Depiction2](https://github.com/privacycoop/cns-commons/blob/main/images/battleship2.png)
 
 There's room for improving the CRUD requirements, but this effort will attempt to descope more external requirements. The primary objective is to identify interfaces for the CRUD to make the SSC DNA Bitmap extremely usable for a variety of platforms, applications, transactions and massive data use.
 
@@ -183,26 +183,30 @@ c) createProg(name: string, uniqueID: string), Goal: add a new Program (legal us
 
 With this approach, we honor the ongoing integrity of a growing upper-right quadrant and can depend on its consistency long term.
 
-![Bitmap Depiction](https://github.com/privacycoop/cns-commons/blob/main/images/battleship3.png)
+![Bitmap Depiction3](https://github.com/privacycoop/cns-commons/blob/main/images/battleship3.png)
 
 In this way, data collected 50 years from now can be used in compliance with a program that exists today, and data collected today can be used in compliance with a program that gets added 50 years from now.
 
-![](RackMultipart20220906-1-s4mi7z_html_c0ed5ea85c48b67f.png)
+![Bitmap Depiction4](https://github.com/privacycoop/cns-commons/blob/main/images/battleship4.png)
+
 
 With the default, "best-guess" effort of the first grid placed on the floor, we can consider it layer zero (0), and make a copy of it and add that as layer one (1).
 
-![](RackMultipart20220906-1-s4mi7z_html_99291a076790dfe5.png)
+![Bitmap Depiction5](https://github.com/privacycoop/cns-commons/blob/main/images/battleship5.png)
+
 
 That new layer can now be assigned to a jurisdiction (Z). For example, GDPR
 
-![](RackMultipart20220906-1-s4mi7z_html_348f3b46080c5ec3.png)
+![Bitmap Depiction6](https://github.com/privacycoop/cns-commons/blob/main/images/battleship6.png)
+
 
 Work can be captured here for ideas on a standard way to approach the jurisdiction layers (Z), which can leverage some existing capabilities such as WorldLii.org, but any additional functionality brought with it will be de-scoped. Primarily, we are interested in the following user stories:
 
 1. As a nation state or sovereign government authority, I would like to create with AuthN+AuthZ my own unique jurisdiction layer in the SSC DNA Bitmap so that we can manage our own default values to be applied as foundational defaults to all organizations (X) and all programs (Y) knowing that they organizations can later update as they see fit so that we can provide observable guidance for our guardrails of data usage when subject to our laws.
 2. As a relying party using data for a secondary purpose, I want to be able to addressably request permission to use data for purpose Y from/by organization X by jurisdiction Z in order to help us honor a subject's (person, place, or thing) elections and to help keep us compliant with various regulations in order to help keep us compliant with various regulations.
 
-![](RackMultipart20220906-1-s4mi7z_html_e64a449d31dbeaa3.png)
+![Bitmap Depiction7](https://github.com/privacycoop/cns-commons/blob/main/images/battleship7.png)
+
 
 In this way, any number of jurisdictions can be added over time, and as with both the X and Y, no delete functionality is planned for the Y axis at this time. A dead program results in a permanent column for many ongoing purposes including nonrepudiation.
 
@@ -214,21 +218,22 @@ You will notice in the above illustration that any Z axis for a specific program
 
 Let's take that J4 axis in the above diagram and turn it so we can visually look down its length. This is how various software programming languages would traverse a bitmap mathematically.
 
-![](RackMultipart20220906-1-s4mi7z_html_1d3c0dc7c3f6f5eb.png) ![](RackMultipart20220906-1-s4mi7z_html_c1365b2db8cfd590.png)
+![Bitmap slice - no jurisdiction](https://github.com/privacycoop/cns-commons/blob/main/images/horizAxis.png)
+
 
 As you can see, each intersection has a value. From this vantage point, we don't know if the values are defaults that are still in the same state as they were in Z0 layer, or if a jurisdiction changed the value, or if a Fannie Mae authorized user changed the value, or if the Person, Place, or Thing associated with this particular bitmap cast a consent election (this idea to be covered soon in an upcoming section). To be candid, we don't care. All we are after is to support all those required user stories, and then to support the Relaying Party user story that wants an answer other than an acknowledgement, null, or error. Even if it's lazy-provisioned at the moment of a first request, it will return a "0 or 1".
 
 With this 3D grid in place, we can support any number of related configurations. Here are some samples…
 
-![](RackMultipart20220906-1-s4mi7z_html_ef571cfcaff476e2.png)
+![Bitmap slice - Jurisdiction selected](https://github.com/privacycoop/cns-commons/blob/main/images/axis2.png)
 
-![](RackMultipart20220906-1-s4mi7z_html_11317acaf2285fb8.png)
+![Bitmap slice - All In](https://github.com/privacycoop/cns-commons/blob/main/images/axis3.png)
 
 This happens to be the way Privacy Co-op handles it.
 
-![](RackMultipart20220906-1-s4mi7z_html_81514c8b37ecdb4e.png)
+![Bitmap slice - All In](https://github.com/privacycoop/cns-commons/blob/main/images/axis4.png)
 
-![](RackMultipart20220906-1-s4mi7z_html_c3b9c21c0b9c093c.png)
+![Bitmap slice - All Out](https://github.com/privacycoop/cns-commons/blob/main/images/axis5.png)
 
 Work can be captured here for ideas on a standard way to approach CRUD for XYZ intersection, which can leverage some existing capabilities values in various stores of record or directly impacted by things like the CCPA requirement for an "Opt-Out" button on privacy policies, but any additional functionality brought from those will be de-scoped. Primarily, we are interested in the following user stories:
 
