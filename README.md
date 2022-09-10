@@ -151,7 +151,7 @@ To examine how we are going to build the SSC DNA Bitmap, let's start with only t
 
 ## Building the Self Sovereign Consent (SSC) DNA Bitmap
 
-![](./images/consentDna.png)
+![Bitmap Depiction](https://github.com/privacycoop/cns-commons/main/images/battleship.png)
 
 The initial grid is easy to approach. The goal is to distil down a consent to use information for secondary purposes to a single bit that resides at an X+Y coordinate.
 
