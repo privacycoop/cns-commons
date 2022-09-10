@@ -137,7 +137,7 @@ The goal of CNS is to normalize and standardize the approach for defining, updat
 
 ## The Grammar of Consent
 
-![Managing Information Rights for Relationships](https://github.com/privacycoop/cns-commons/main/images/consentDna.png)
+![Managing Information Rights for Relationships](https://github.com/privacycoop/cns-commons/blob/main/images/consentDna.png)
 
 On the left side, the subject, we must constrain a request to one single object--a person, place or thing. Some people get confused on what we mean by a person, so we have adopted the CBLF (Carbon-Based Life Form) monicar. The goal here is to stretch your thinking beyond a browser or a device. In today's world, trees put out data that can be used by various relying parties using tech such as Augmented Reality. Consent applies to all.
 
@@ -151,13 +151,13 @@ To examine how we are going to build the SSC DNA Bitmap, let's start with only t
 
 ## Building the Self Sovereign Consent (SSC) DNA Bitmap
 
-![Bitmap Depiction](https://github.com/privacycoop/cns-commons/main/images/battleship.png)
+![Bitmap Depiction](https://github.com/privacycoop/cns-commons/blob/main/images/battleship.png)
 
 The initial grid is easy to approach. The goal is to distil down a consent to use information for secondary purposes to a single bit that resides at an X+Y coordinate.
 
 Project Falcon is agnostic to the work leading up to the intersection value as well as what happens with it afterward. However, the subject of these specs largely focus on the CRUD for the value (Create, Read, Update, and Delete).
 
-![Bitmap Depiction](https://github.com/privacycoop/cns-commons/main/images/battleship2.png)
+![Bitmap Depiction](https://github.com/privacycoop/cns-commons/blob/main/images/battleship2.png)
 
 There's room for improving the CRUD requirements, but this effort will attempt to descope more external requirements. The primary objective is to identify interfaces for the CRUD to make the SSC DNA Bitmap extremely usable for a variety of platforms, applications, transactions and massive data use.
 
@@ -183,7 +183,7 @@ c) createProg(name: string, uniqueID: string), Goal: add a new Program (legal us
 
 With this approach, we honor the ongoing integrity of a growing upper-right quadrant and can depend on its consistency long term.
 
-![Bitmap Depiction](https://github.com/privacycoop/cns-commons/main/images/battleship3.png)
+![Bitmap Depiction](https://github.com/privacycoop/cns-commons/blob/main/images/battleship3.png)
 
 In this way, data collected 50 years from now can be used in compliance with a program that exists today, and data collected today can be used in compliance with a program that gets added 50 years from now.
 
