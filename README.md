@@ -111,7 +111,7 @@ Different media channels present unique identifier and technology environments. 
 13. Potentially removes the data plane from simple tech stack
 
 
-## Executive Overview ![](RackMultipart20220906-1-s4mi7z_html_194f36e18d45a370.jpg)
+## Executive Overview
 
 Cookies are going away. Privacy Regulations are increasing and tightening. Businesses in all sectors (not just tech) are feeling pressure to grow revenue from secondary uses of data, all while consumers are growing increasingly upset by perceptions of data exploitation.
 
@@ -137,7 +137,7 @@ The goal of CNS is to normalize and standardize the approach for defining, updat
 
 ## The Grammar of Consent
 
-![Managing Information Rights for Relationships](https://github.com/privacycoop/cns-commons/edit/main/images/consentDna.png)
+![Managing Information Rights for Relationships](https://github.com/privacycoop/cns-commons/main/images/consentDna.png)
 
 On the left side, the subject, we must constrain a request to one single object--a person, place or thing. Some people get confused on what we mean by a person, so we have adopted the CBLF (Carbon-Based Life Form) monicar. The goal here is to stretch your thinking beyond a browser or a device. In today's world, trees put out data that can be used by various relying parties using tech such as Augmented Reality. Consent applies to all.
 
