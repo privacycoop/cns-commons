@@ -1,15 +1,10 @@
-![](RackMultipart20220906-1-s4mi7z_html_488f574f18d7ce1a.png) ![](RackMultipart20220906-1-s4mi7z_html_488f574f18d7ce1a.png)
-
 # **Consent Name System (CNS)**
 
 # **Self Sovereign Consent DNA Bitmap**
 
-![Shape1](RackMultipart20220906-1-s4mi7z_html_460e9811701606c0.gif)
-
 **If you'd prefer a video** [**click here for the video**](https://vimeo.com/showcase/falcon) **and start reading in the document at** [**The Grammar of Consent**](#_ufus81difrvc) **.**
 
 W3C WICG Group - [https://discourse.wicg.io/t/proposal-project-falcon-global-consent-dna-bitmaps-and-consent-management-service-cms/4634](https://discourse.wicg.io/t/proposal-project-falcon-global-consent-dna-bitmaps-and-consent-management-service-cms/4634)
-
 
 
 **Goals**
@@ -62,57 +57,57 @@ Different media channels present unique identifier and technology environments. 
 **Short Outline of the Solution:**
 
 1. The Grammar of Consent--what it is we are actually trying to solve.
-  1. Singular Subject--a Person, Place, or Thing
-  2. Compound Predicate--one to many combinations of a Business (or Gov Agency), a Legal Use of Data (sometimes called a "Program"--we know...we wish lawyers hadn't picked that word), and a Jurisdiction. This can be a single X+Y+Z or an array of [xyz1, xyz2, etc].
+  a. Singular Subject--a Person, Place, or Thing
+  b. Compound Predicate--one to many combinations of a Business (or Gov Agency), a Legal Use of Data (sometimes called a "Program"--we know...we wish lawyers hadn't picked that word), and a Jurisdiction. This can be a single X+Y+Z or an array of [xyz1, xyz2, etc].
 2. Building the Self Sovereign Consent (SSC) DNA Bitmap.
-  1. Put the X + Y on a two dimensional plane and understand its properties and attributes and how they work.
-    1. Need for standardized business/gov agency ledger additions. There are competing standards that can be considered.
-    2. Also similar need for Program ledger additions.
-  2. Replicate the X+Y into various copies on a Z axis and modify their default setting for a single jurisdiction per layer.
+  a. Put the X + Y on a two dimensional plane and understand its properties and attributes and how they work.
+    i. Need for standardized business/gov agency ledger additions. There are competing standards that can be considered.
+    ii. Also similar need for Program ledger additions.
+  b. Replicate the X+Y into various copies on a Z axis and modify their default setting for a single jurisdiction per layer.
 3. SSC DNA Bitmap Consent Resolution. How the Bitmap resolves singular, complex, compound, or complex/compound requests in any language and in any technology.
   1. 3D drill down into one Z axis intersection to see how we arrive very quickly at a "0 or 1" response.
 4. Compression
-  1. Using various native bitmap libraries to minimize not only footprint but also resulting functionality for any technical realization.
-  2. Example: hex code.
+  a. Using various native bitmap libraries to minimize not only footprint but also resulting functionality for any technical realization.
+  b. Example: hex code.
 5. SSC DNA metadata
-  1. Storage Address
-  2. Assignability
-  3. Provisioning
-  4. Relationships
-  5. Architectural distribution/deployment
+  a. Storage Address
+  b. Assignability
+  c. Provisioning
+  d. Relationships
+  e. Architectural distribution/deployment
 6. Lazy Provisioning
-  1. How a response can be given even before a user makes their election known.
-  2. Living Logs
+  a. How a response can be given even before a user makes their election known.
+  b. Living Logs
 7. Consistent Addressability
-  1. Supports all use cases from transactional to Big Data in a decentralized + cacheable distribution.
-  2. Browser
-  3. Apps in a Browser
-  4. Big Data
-  5. 3rd Party Use of Data
-  6. Compound/Complex use of Data
-  7. Contract Snippets
-  8. Masks (bitmasks)
+  a. Supports all use cases from transactional to Big Data in a decentralized + cacheable distribution.
+  b. Browser
+  c. Apps in a Browser
+  d. Big Data
+  e. 3rd Party Use of Data
+  f. Compound/Complex use of Data
+  g. Contract Snippets
+  h. Masks (bitmasks)
 8. The Pointer - a focus of additional standardization work in W3C
-  1. Open for interpretation and even supports existing IP claims, etc.
-  2. Prependability
-  3. Pointer Resolution Rules
-  4. Referential Integrity
-  5. Organization Identifier
-  6. Privacy String--competing standards need to be considered.
-  7. Optional Subject ID
+  a. Open for interpretation and even supports existing IP claims, etc.
+  b. Prependability
+  c. Pointer Resolution Rules
+  d. Referential Integrity
+  e. Organization Identifier
+  f. Privacy String--competing standards need to be considered.
+  g. Optional Subject ID
 9. Pointer Resolution Rules, a subcomponent of the pointer, can be singular, compound, complex, or compound/complex.
-  1. Puts customization in the hands of those legally on the hook to adhere to regulations for their particular use.
-  2. Can handle crazy corner cases.
+  a. Puts customization in the hands of those legally on the hook to adhere to regulations for their particular use.
+  b. Can handle crazy corner cases.
 10. Standardized updates
-  1. Low threshold for changing 1 to 0.
-  2. High threshold for changing 0 to 1.
-  3. Supports externality of Affirmative Express Consent.
-  4. Supports Authorized Agency.
+  a. Low threshold for changing 1 to 0.
+  b. High threshold for changing 0 to 1.
+  c. Supports externality of Affirmative Express Consent.
+  d. Supports Authorized Agency.
 11. Proposed re-purposing of DNS server open-source code and architecture
 12. Supports platforms below and products above the marketplace
-  1. A role for SSI
-  2. A role for Blockchain
-  3. A role for AuthN+AuthZ
+  a. A role for SSI
+  b. A role for Blockchain
+  c. A role for AuthN+AuthZ
 13. Potentially removes the data plane from simple tech stack
 
 
@@ -156,7 +151,7 @@ To examine how we are going to build the SSC DNA Bitmap, let's start with only t
 
 ## Building the Self Sovereign Consent (SSC) DNA Bitmap
 
-![](RackMultipart20220906-1-s4mi7z_html_37c7f4916bee2286.png)
+![](./images/consentDna.png)
 
 The initial grid is easy to approach. The goal is to distil down a consent to use information for secondary purposes to a single bit that resides at an X+Y coordinate.
 
