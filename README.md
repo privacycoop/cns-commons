@@ -157,7 +157,7 @@ The initial grid is easy to approach. The goal is to distil down a consent to us
 
 Project Falcon is agnostic to the work leading up to the intersection value as well as what happens with it afterward. However, the subject of these specs largely focus on the CRUD for the value (Create, Read, Update, and Delete).
 
-![](RackMultipart20220906-1-s4mi7z_html_166131ee631060c1.png)
+![Bitmap Depiction](https://github.com/privacycoop/cns-commons/main/images/battleship2.png)
 
 There's room for improving the CRUD requirements, but this effort will attempt to descope more external requirements. The primary objective is to identify interfaces for the CRUD to make the SSC DNA Bitmap extremely usable for a variety of platforms, applications, transactions and massive data use.
 
@@ -183,7 +183,7 @@ c) createProg(name: string, uniqueID: string), Goal: add a new Program (legal us
 
 With this approach, we honor the ongoing integrity of a growing upper-right quadrant and can depend on its consistency long term.
 
-![](RackMultipart20220906-1-s4mi7z_html_746adf027f59224c.png)
+![Bitmap Depiction](https://github.com/privacycoop/cns-commons/main/images/battleship3.png)
 
 In this way, data collected 50 years from now can be used in compliance with a program that exists today, and data collected today can be used in compliance with a program that gets added 50 years from now.
 
