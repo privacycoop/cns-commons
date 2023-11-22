@@ -1,1 +1,656 @@
-{}
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "0.2.1",
+    "title": "CNS API",
+    "x-copyright": "Copyright © 2023 Data Stewardship Solutions Inc. All rights reserved.",
+    "description": "REST API supporting Vpnsent NAme Service emerging standard with multi-jurisdictional consent lookups, updates, and transactional metering.",
+    "contact": {
+      "name": "Data Stewardship Solutions Inc.",
+      "url": "https://datastewardship.solutions",
+      "email": "support@datastewardship.solutions"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/license/mit/"
+    }
+  },
+  "tags": [
+    {
+      "name": "getConsent",
+      "description": "Get Consent Elections - in subject blocks up to 10k per request",
+      "x-visibility": "ROLE: CNS Service Client",
+      "externalDocs": {
+        "url": "https://datastewardship.cloud (Coming Soon!)"
+      }
+    },
+    {
+      "name": "updateConsent",
+      "description": "Update Consent Elections",
+      "x-visibility": "ROLE: CNS Service Client",
+      "externalDocs": {
+        "url": "https://datastewardship.cloud (Coming Soon!)"
+      }
+    },
+    {
+      "name": "getJurisdictions",
+      "description": "Fetch available jurisdiction names with descriptions",
+      "x-visibility": "ROLE: CNS Service Client",
+      "externalDocs": {
+        "url": "https://datastewardship.cloud (Coming Soon!)"
+      }
+    },
+    {
+      "name": "getDataUses",
+      "description": "Fetch data use names, masks, and descriptions",
+      "x-visibility": "ROLE: CNS Service Client",
+      "externalDocs": {
+        "url": "https://datastewardship.cloud (Coming Soon!)"
+      }
+    }
+  ],
+  "servers": [
+    {
+      "url": "{protocol}://consentnameservice.tbd",
+      "description": "Proposed consent name service",
+      "variables": {
+        "protocol": {
+          "default": "https",
+          "enum": [
+            "https"
+          ]
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/getConsent": {
+      "post": {
+        "tags": [
+          "getConsentElections"
+        ],
+        "summary": "CNS Requests: Get consent elections",
+        "description": "This endpoint allows the client to query consent authorizations (single or bulk).",
+        "operationId": "getConsent",
+        "requestBody": {
+          "description": "Query consent authorizations for multiple subjects",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getConsent"
+              },
+              "examples": {
+                "exampleGC1": {
+                  "$ref": "#/components/examples/getConsentRequest"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success. Returns the requested consent authorizations.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/getConsentResponse"
+                },
+                "examples": {
+                  "examplegetConsentResponse": {
+                    "$ref": "#/components/examples/getConsentResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid credentials in Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateConsent": {
+      "post": {
+        "tags": [
+          "updateConsentElections"
+        ],
+        "description": "CNS Requests:Update Consent Elections",
+        "operationId": "updateConsent",
+        "requestBody": {
+          "description": "Update consent Elections for subject endpoints",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateConsent"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/UCresp"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid credentials in Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "getConsent": {
+        "description": "Query Bulk, Single, or Transactional Metered consent elections request schema",
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "request:: getConsent: Bulk Consent Elections Query Service, get1Consent: Individual Consent Elections Query Service, getMeteredConsent: Per Transaction Metered Consent Query Service",
+            "enum": [
+              "getConsent",
+              "get1Consent",
+              "getMeteredConsent"
+            ],
+            "minLength": 1,
+            "maxLength": 32
+          },
+          "affiliate": {
+            "type": "string",
+            "example": "zdgagtbrjrtjrjmdtzxhb",
+            "minLength": 1,
+            "maxLength": 512,
+            "description": "DEMO Affiliate ID assigned by Data Stewardship Solutions upon execution of affiliate agreement"
+          },
+          "confCode": {
+            "type": "string",
+            "example": "agh98ehyga9aehgae9hgv",
+            "minLength": 1,
+            "maxLength": 512,
+            "description": "DEMO Authentication Token provided by Data Stewardship Solutions on account creation - replaced by SIG4 for production access"
+          },
+          "validation": {
+            "type": "string",
+            "example": "hkw4g89yhgm94m0wjg8w4m",
+            "minLength": 1,
+            "maxLength": 512,
+            "description": "DEMO Authorization Validation Token provided by Data Stewardship Solutions on account creation- replaced by SIG4 for production access"
+          },
+          "jurisdiction": {
+            "description": "Jurisdiction(s) to query for consent elections",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "us_pa74",
+                "us_ca_ccpa",
+                "eu_gdpr",
+                "ar",
+                "au",
+                "br_lgpd",
+                "ca",
+                "ch",
+                "mx",
+                "in_pdp",
+                "jp",
+                "ko",
+                "za",
+                "ua"
+              ]
+            },
+            "example": [
+              "eu_gdpr",
+              "us_ca_ccpa",
+              "us_pa74"
+            ]
+          },
+          "dataUsageMask": {
+            "description": "Data Usage Mask(s) unsigned 64 bit integer to query for consent elections. See getDataUses for mapping",
+            "type": "integer",
+            "minimum": 4
+          },
+          "payload": {
+            "description": "Payload to query for consent elections. JSON object containing arrays of distinctive identifiers by type. At least one of the array objects must be included.",
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 512
+                }
+              },
+              "phone": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 512
+                }
+              },
+              "accountNum": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 512
+                }
+              },
+              "other": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 512
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "request",
+          "affiliate",
+          "confCode",
+          "validation",
+          "jurisdiction",
+          "dataUsageMask",
+          "payload"
+        ]
+      },
+      "updateConsent": {
+        "description": "Update consent election request",
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "enum": [
+              "updateOpts"
+            ],
+            "minLength": 1
+          },
+          "affiliate": {
+            "type": "string",
+            "minLength": 1
+          },
+          "confCode": {
+            "type": "string",
+            "minLength": 1
+          },
+          "validation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "jurisdiction": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "enum": [
+                "us_pa74",
+                "us_ca_ccpa",
+                "eu_gdpr",
+                "ar",
+                "au",
+                "br_lgpd",
+                "ca",
+                "ch",
+                "mx",
+                "in_pdp",
+                "jp",
+                "ko",
+                "za",
+                "ua"
+              ]
+            },
+            "example": [
+              "eu_gdpr",
+              "us_ca-ccpa",
+              "us_pa74"
+            ]
+          },
+          "optInMask": {
+            "type": "integer",
+            "minimum": 4
+          },
+          "optOutMask": {
+            "type": "integer",
+            "minimum": 4
+          },
+          "payload": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "phone": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "accountNum": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "federatedIdentity": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "request",
+          "affiliate",
+          "confCode",
+          "validation",
+          "jurisdiction",
+          "optInMask",
+          "optOutMask",
+          "payload"
+        ],
+        "x-examples": {
+          "example-1": {
+            "request": "{requestType}",
+            "affiliate": "companyIdentifierString",
+            "confCode": "bearerOrOtherToken",
+            "validation": "AdditionalAuthString",
+            "jurisdiction": [
+              "us_pa74",
+              "au",
+              "br_lgpd",
+              "ca",
+              "mx",
+              "in_pdp"
+            ],
+            "optInMask": 40,
+            "payload": {
+              "email": [
+                "email1@gmail.com",
+                "mymail@aol.com"
+              ],
+              "phone": [
+                "213-555-1212",
+                "011-54-2-345-234"
+              ],
+              "accountNum": [
+                "ade432f",
+                "r5t34rh",
+                "63oy435"
+              ]
+            }
+          }
+        }
+      },
+    },
+    "examples": {
+      "getConsentRequest": {
+        "value": {
+          "request": "getConsent",
+          "affiliate": "1467b550e3120d4b8ad5780830e0d9c1",
+          "confCode": "eaf8b380731902ddc4a2603014a4cf3d",
+          "validation": "2f18e31e6b2709ec5f58e9a6df2ae6bf",
+          "4Company": "optionalCompanyId",
+          "gca3Id": 1,
+          "jurisdiction": [
+            "us_pa74",
+            "us_ca_ccpa"
+          ],
+          "dataUsageMask": 4,
+          "loa": "NIST SP.800-63-3:IAL2, AAL1, FAL2",
+          "payload": {
+            "email": [
+              "relevant_ads@gmail.com",
+              "targeted_ads@aol.com",
+              "aggregate_rpts@sbc.net",
+              "anon_rpts@yahoo.com",
+              "aggr_anon_rpts@yahoo.com",
+              "cookies@mail.com",
+              "text@mail.com",
+              "email@mail.com",
+              "voice@mail.com",
+              "dir_mail@mail.com",
+              "prod_dev@mail.com",
+              "browser_ads@mail.com",
+              "in_app_ads@mail.com",
+              "telco_fraud@mail.com",
+              "epidemic_tracing@mail.com"
+            ],
+            "phone": [
+              "214-443-4567",
+              "543-234-7890",
+              "011-345-7634"
+            ],
+            "accountNum": [
+              "456453",
+              "498576sa",
+              "1245615sc",
+              "as23452345",
+              "qr-49875a"
+            ],
+            "federatedIdentity": [
+              "UnifiedId-0-1",
+              "UnifiedId-0-2"
+            ]
+          }
+        }
+      },
+      "getConsentResponse": {
+        "value": {
+          "011-345-7634": 1,
+          "1245615sc": 1,
+          "214-443-4567": 1,
+          "456453": 1,
+          "498576sa": 1,
+          "543-234-7890": 1,
+          "UnifiedId-0-1": 1,
+          "UnifiedId-0-2": 1,
+          "aggr_anon_rpts@yahoo.com": 1,
+          "aggregate_rpts@sbc.net": 1,
+          "anon_rpts@yahoo.com": 1,
+          "as23452345": 1,
+          "browser_ads@mail.com": 1,
+          "cookies@mail.com": 1,
+          "dir_mail@mail.com": 1,
+          "email@mail.com": 1,
+          "epidemic_tracing@mail.com": 1,
+          "in_app_ads@mail.com": 1,
+          "prod_dev@mail.com": 1,
+          "qr-49875a": 1,
+          "relevant_ads@gmail.com": 1,
+          "targeted_ads@aol.com": 1,
+          "telco_fraud@mail.com": 1,
+          "text@mail.com": 1,
+          "voice@mail.com": 1
+        }
+      },
+      "Error": {
+        "value": {
+          "errorCode": "422",
+          "error": "Error message appears here as plain text"
+        }
+      }
+    },
+    "responses": {
+      "getConsentResponse": {
+        "description": "Returned consent elections",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "description": "binary 0=no / 1=yes",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "minProperties": 1,
+              "x-examples": {
+                "example-2": {
+                  "myemail@gmail.com": 1,
+                  "hisemail@aol.com": 0,
+                  "214-443-4567": 0,
+                  "543-234-7890": 1,
+                  "011-345-7634": 1,
+                  "498576sa": 1,
+                  "1245615sc": 0,
+                  "as23452345": 1,
+                  "qr-49875a": 1
+                }
+              }
+            }
+          }
+        }
+      },
+      "UCresp": {
+        "description": "Returned updated elections",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "description": "64 bit unsigned INT - may lengthen in future versions",
+                "minimum": 0
+              },
+              "minProperties": 1
+            },
+            "examples": {
+              "example-1": {
+                "value": {
+                  "myemail@gmail.com": 290766,
+                  "hisemail@aol.com": 491646,
+                  "214-443-4567": 415689,
+                  "543-234-7890": 583645,
+                  "011-345-7634": 205673,
+                  "498576sa": 348675,
+                  "1245615sc": 538620,
+                  "as23452345": 491646,
+                  "qr-49875a": 207534
+                }
+              }
+            }
+          }
+        }
+      },
+      "Error": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "errorCode": {
+                  "type": "integer"
+                },
+                "errorType": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "errorMessage": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "errorCode",
+                "errorType",
+                "errorMessage"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
